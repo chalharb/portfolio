@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { Post } from "@/types/post";
 import fs from "fs";
 import matter from "gray-matter";
