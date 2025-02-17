@@ -10,7 +10,7 @@ function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-function getPost(slug: string) {
+export function getPost(slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -24,30 +24,11 @@ function getPost(slug: string) {
   } as Post;
 }
 
-function getAllPosts(): Post[] {
+export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPost(slug))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
-}
-
-export interface RequestProps {
-  params: { slug: string };
-}
-
-export async function GET(): Promise<Response> {
-  try {
-    const posts = getAllPosts();
-
-    return NextResponse.json({ posts }, { status: 200 });
-  } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      { status: 500, error: "Unknown error occurred." },
-      { status: 500 }
-    );
-  }
 }
