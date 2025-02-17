@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { join } from "path";
 
 interface RequestProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 const postsDirectory = join(process.cwd(), "_posts");
