@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/global/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Footer } from "@/components/global/footer";
+// import { Footer } from "@/components/global/footer";
 
 import "./globals.css";
 
@@ -71,12 +71,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+          <div className="antialiased max-w-[900] mx-4 mt-8 lg:mx-auto">
             <Navbar />
             <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
               {children}
             </main>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </ThemeProvider>
         <Analytics />
